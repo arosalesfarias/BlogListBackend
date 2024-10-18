@@ -12,6 +12,13 @@ const totalLikes = (arr) => {
     return arr.reduce(sumLikes, 0)
 }
 
+const favoriteBlog = (arr) => {
+    const maxLikes = (maxItem, item) =>
+        item.likes >= maxItem.likes? item : maxItem
+    
+    return arr.length === 0? undefined : arr.reduce(maxLikes,{likes: 0})
+}
+
 module.exports = {
-    dummy, totalLikes
+    dummy, totalLikes, favoriteBlog
 }
