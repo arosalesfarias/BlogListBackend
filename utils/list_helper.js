@@ -31,6 +31,17 @@ const mostBlogs = (arr) => {
     return _.maxBy(autoresList, 'blogs')
 }
 
+const mostLikes = (arr) => {
+    //Group by likes per author
+    const autoresSumados = _.groupBy(arr, 'author')
+
+    //Transform Object in List Objects of Author and likes quantity
+    const autoresLikes = Object.entries(autoresSumados).map(([author, blogs])=> ({author, likes: _.sumBy(blogs,'likes')}))
+
+    //Find Author max likes and return
+    return _.maxBy(autoresLikes, 'likes')
+}
+
 module.exports = {
-    dummy, totalLikes, favoriteBlog, mostBlogs
+    dummy, totalLikes, favoriteBlog, mostBlogs, mostLikes
 }

@@ -151,3 +151,17 @@ describe('Most Blogs', () => {
         assert.deepStrictEqual(listHelper.mostBlogs(bigList), {author: 'Don Satur2', blogs: 5})
     })
 })
+
+describe('Most Likes', () => {
+    test('when list has only one blog, the autor is the only', () => {
+        const {author, likes} = listWithOneBlog.at(0)
+        const result = {author, likes}
+        assert.deepStrictEqual(listHelper.mostLikes(listWithOneBlog), result)
+    })
+    test('of empty list is undefined', () => {
+        assert.strictEqual(listHelper.mostLikes([]), undefined)
+    })
+    test('of a bigger list is Don Satur2', () => {
+        assert.deepStrictEqual(listHelper.mostLikes(bigList), {author: 'Don Satur2', likes: 134})
+    })
+})
