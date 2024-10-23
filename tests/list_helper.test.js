@@ -24,7 +24,7 @@ const bigList = [
     {
         _id: '5a422aa71b54a676234d17f0',
         title: 'Level 0',
-        author: 'Don Satur',
+        author: 'Don Satur1',
         url: 'https://donsatur.io',
         likes: 5,
         __v: 0
@@ -32,42 +32,42 @@ const bigList = [
     {
         _id: '5a422aa71b54a676234d17f1',
         title: 'Level 1',
-        author: 'Don Satur',
+        author: 'Don Satur2',
         url: 'https://donsatur.io',
         likes: 8,
         __v: 0
     }, {
         _id: '5a422aa71b54a676234d17f2',
         title: 'Level 2',
-        author: 'Don Satur',
+        author: 'Don Satur3',
         url: 'https://donsatur.io',
         likes: 65,
         __v: 0
     }, {
         _id: '5a422aa71b54a676234d17f3',
         title: 'Level 3',
-        author: 'Don Satur',
+        author: 'Don Satur2',
         url: 'https://donsatur.io',
         likes: 12,
         __v: 0
     }, {
         _id: '5a422aa71b54a676234d17f4',
         title: 'Level 4',
-        author: 'Don Satur',
+        author: 'Don Satur2',
         url: 'https://donsatur.io',
         likes: 2,
         __v: 0
     }, {
         _id: '5a422aa71b54a676234d17f5',
         title: 'Level 5',
-        author: 'Don Satur',
+        author: 'Don Satur1',
         url: 'https://donsatur.io',
         likes: 51,
         __v: 0
     }, {
         _id: '5a422aa71b54a676234d17f6',
         title: 'Level 6',
-        author: 'Don Satur',
+        author: 'Don Satur3',
         url: 'https://donsatur.io',
         likes: 33,
         __v: 0
@@ -75,14 +75,14 @@ const bigList = [
     {
         _id: '5a422aa71b54a676234d17f7',
         title: 'Level 7',
-        author: 'Don Satur',
+        author: 'Don Satur2',
         url: 'https://donsatur.io',
         likes: 12,
         __v: 0
     }, {
         _id: '5a422aa71b54a676234d17f8',
         title: 'Level 8',
-        author: 'Don Satur',
+        author: 'Don Satur3',
         url: 'https://donsatur.io',
         likes: 21,
         __v: 0
@@ -90,7 +90,7 @@ const bigList = [
     {
         _id: '5a422aa71b54a676234d17f9',
         title: 'Level 9',
-        author: 'Don Satur',
+        author: 'Don Satur2',
         url: 'https://donsatur.io',
         likes: 100,
         __v: 0
@@ -136,5 +136,18 @@ describe('Favorite Blog', () => {
     ]
     test('of a list without likes returns the last one', () => {
         assert.strictEqual(listHelper.favoriteBlog(withoutLikes), withoutLikes.at(-1))
+    })
+})
+
+describe('Most Blogs', () => {
+    test('when list has only one blog, the autor is the only', () => {
+        const result = { author: listWithOneBlog.at(0).author, blogs: 1}
+        assert.deepStrictEqual(listHelper.mostBlogs(listWithOneBlog), result)
+    })
+    test('of empty list is undefined', () => {
+        assert.strictEqual(listHelper.mostBlogs([]), undefined)
+    })
+    test('of a bigger list is Don Satur2', () => {
+        assert.deepStrictEqual(listHelper.mostBlogs(bigList), {author: 'Don Satur2', blogs: 5})
     })
 })
