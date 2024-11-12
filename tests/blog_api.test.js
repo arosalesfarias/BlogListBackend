@@ -25,6 +25,10 @@ describe('Api Test', () => {
         const response = await blogsInDb()
         assert.strictEqual(response.length, initialBlogs.length)
     })
+    test('blogs have an id instead of _id', async () => {
+        const response = await blogsInDb()
+        assert.ok(response.every(blog => blog.hasOwnProperty('id')), 'There are blogs without id property')
+    })
 })
 
 after(async () => {
